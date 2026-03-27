@@ -54,7 +54,7 @@ with DAG(
     
     def _upload_to_gcs(ds: str,**kwargs):
         ti = kwargs["ti"]
-        csv_data = ti.xcom_pull(task_ids="extract_weather_data")
+        csv_data = ti.xcom_pull(task_ids="extract_wheather_data")
         hook = GCSHook()
 
         hook.upload(
