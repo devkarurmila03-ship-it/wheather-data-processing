@@ -29,7 +29,7 @@ with DAG(
             "main_python_file_uri": f"gs://weather-data-kds/script/weather_data_processing.py",  # Main Python file
             "python_file_uris": [],  # Python WHL files
             "jar_file_uris": [],  # JAR files
-            "args": [ß]
+            "args": []
         },
         "runtime_config": {
             "version": "2.2",  # Specify Dataproc version (if needed)

@@ -42,4 +42,8 @@ jobs:
 
       - name: Upload airflow dag to dev enviroment
         run: |
-          gcloud composer environments storage dags import --environment kd-composer-dev --location us-central1 --source wheather_airflow_dags
+          gcloud composer environments storage dags import --environment kd-composer-dev --location us-central1 --source wheather_airflow_dags/extract_data_dag.py
+      
+      - name: Upload airflow dag to dev enviroments
+        run: |
+          gcloud composer environments storage dags import --environment kd-composer-dev --location us-central1 --source wheather_airflow_dags/transform_data_dag.py

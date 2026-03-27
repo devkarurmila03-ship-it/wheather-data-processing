@@ -61,7 +61,7 @@ with DAG(
         hook.upload(
             bucket_nam="weather-data-kds",
             object_name=f"weather/{ds}/forecast.csv",
-            data = csv_data
+            data = csv_data,
             mine_type = "text/csv"
         )
 
