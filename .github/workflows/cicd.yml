@@ -1,0 +1,46 @@
+
+name: Flight Booking CICD
+
+on:
+  push:
+    branches:
+        - main
+
+# Required permissions for OIDC
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code 
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: "projects/336632331058/locations/global/workloadIdentityPools/github-pool-new/providers/github-provider"
+          service_account: "github-deployer@project-b33d6da0-bcfc-471f-99c.iam.gserviceaccount.com"
+
+      - name: Set up gcloud CLI
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: "project-b33d6da0-bcfc-471f-99c"
+          export_default_credentials: true
+
+      - name: Upload spark job to gcs
+        run: |
+          gsutil cp spark_job/weather_data_processing.py gs://weather-data-kds/script/
+
+      - name: Upload airflow dag to dev enviroment
+        run: |
+          gcloud composer environments storage dags import --environment kd-composer-dev --location us-central1 --source weather_airflow_dags
