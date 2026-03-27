@@ -51,7 +51,7 @@ def main():
             col("`wind.speed`").cast("double").alias("wind_speed"),
             col("`wind.deg`").cast("double").alias("wind_deg"),
             col("`wind.gust`").cast("double").alias("wind_gust"),
-            col("`wind.pod`").cast("double").alias("wind_pod"),
+            col("`sys.pod`").cast("double").alias("sys_pod"),
             col("`rain.3h`").cast("double").alias("rain_3h")
             
         )
