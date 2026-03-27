@@ -1,5 +1,4 @@
 from airflow import DAG
-from airflow.utils.dates import day_ago
 from airflow.operators.trigger_dagrun import TriggerDagRunOperator
 from airflow.operators.python import PythonVirtualenvOperator
 from airflow.operators.python import PythonOperator
