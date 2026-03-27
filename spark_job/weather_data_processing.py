@@ -16,7 +16,7 @@ def main():
 
     #---------Spark session
     spark = (
-        SparkSession.builder.appName("weatherDataProcessing").getOrCreate()
+        SparkSession.builder.appName("weatherDataProcessingKD").getOrCreate()
     )
 
     #--------------Read & infer
