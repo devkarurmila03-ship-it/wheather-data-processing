@@ -52,7 +52,7 @@ with DAG(
         op_kwargs = {"api_key":Variable.get("openwheather_api_key")}
     )
     
-    def _upload_to_gcs(ds: str,*kwargs):
+    def _upload_to_gcs(ds: str,**kwargs):
         ti = kwargs["ti"]
         csv_data = ti.xcom_pull(task_ids="extract_weather_data")
         hook = GCSHook()
