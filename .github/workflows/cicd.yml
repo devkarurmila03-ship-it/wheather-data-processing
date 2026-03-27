@@ -35,7 +35,6 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
         with:
           project_id: "project-b33d6da0-bcfc-471f-99c"
-          export_default_credentials: true
 
       - name: Upload spark job to gcs
         run: |
