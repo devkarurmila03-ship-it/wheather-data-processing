@@ -44,7 +44,7 @@ with DAG(
     }
 
     pyspark_task = DataprocCreateBatchOperator(
-        task_id="spark_job_on_dataproc_serverlessß",
+        task_id="spark_job_on_dataproc_serverless",
         batch=batch_details,
         batch_id=batch_id,
         project_id="mythic-aloe-457912-d5",
